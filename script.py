@@ -8,10 +8,22 @@
 import sys
 import argparse
 import json
-from pprint import pprint
 
 vendors = {
-    'apple' : 'Apple, Inc'
+    'apple' : 'Apple, Inc',
+    'samsung' : 'Huawei Technologies Co. Ltd',
+    'huawei' : 'Huawei Technologies Co. Ltd',
+    'lg' : 'LG Corporation',
+    'google' : 'Google, Inc',
+    'nokia' : 'Nokia Corporation',
+    'sony' : 'Sony Corporation',
+    'xiaomi' : 'Xiaomi',
+    'microsoft' : 'Microsoft Corporation',
+    'motorola' : 'Motorola Solutions Inc',
+    'nec' : 'NEC Corporation',
+    'blackberry' : 'BlackBerry Limited',
+    'ericsson' : 'Ericsson'
+
 }
 
 def main():
@@ -22,7 +34,7 @@ def handle_args(args):
     if args.mac:
         get_vendor(args.mac[0:8])
         print("")
-
+        sys.exit()
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -32,26 +44,18 @@ def parse_args():
     return parser.parse_args(sys.argv[1:])
 
 def get_vendor(mac):
-    for key in vendors:
-        with open('vendors/'+key+'.json') as f:
-            apple = json.load(f)
-            if mac in apple:
-                print('\033[92m'+vendors[key]+'\033[0m')
+    for vendor_name in vendors:
+        with open('vendors/'+vendor_name+'.json') as f:
+            vendor_mac_addresses = json.load(f)
+            if mac in vendor_mac_addresses:
+                print('\033[92m'+'[+] '+vendors[vendor_name]+'\033[0m')
                 return
+            else:
+                print('\033[91m'+'[-] '+vendors[vendor_name]+'\033[0m')
+    print('')
     print('\033[91m'+'No results!'+'\033[0m')
 
 def print_banner():
-    # print("")
-    # print("          ##   ###       ##")
-    # print("         ###    ##      ###")
-    # print("          ##    ##      ###")
-    # print(" # ###    ##    ##     ####  # ###")
-    # print(" ###      ##    ##     # ##  ###")
-    # print(" ##       ##    ##    ## ##  ##")
-    # print(" ##       ##    ##    #####  ##")
-    # print(" ##       ##   ####      ##  ##   ")
-    # print("")
-    # print("")
     print("")
     print('\033[94m'+'Vendor-Mac-Addresses 1.0 - By https://github.com/r1l4r'+'\033[0m')
     print("A tool to find the manufactoror by mac address with focus on mobile phones")
