@@ -48,6 +48,7 @@ def get_vendor(mac):
         with open('vendors/'+vendor_name+'.json') as f:
             vendor_mac_addresses = json.load(f)
             if mac in vendor_mac_addresses:
+                print("")
                 print('\033[92m'+'[+] '+vendors[vendor_name]+'\033[0m')
                 return
             else:
@@ -58,7 +59,7 @@ def get_vendor(mac):
 def print_banner():
     print("")
     print('\033[94m'+'Vendor-Mac-Addresses 1.0 - By https://github.com/r1l4r'+'\033[0m')
-    print("A tool to find the manufactoror by mac address with focus on mobile phones")
+    print("A tool to find the manufacturer by mac address with focus on mobile phones")
     print("")
     print("Last updated 2018-11-10:")
     print("https://udger.com/resources/mac-address-vendor")
