@@ -48,13 +48,14 @@ def get_vendor(mac):
         with open('vendors/'+vendor_name+'.json') as f:
             vendor_mac_addresses = json.load(f)
             if mac in vendor_mac_addresses:
-                print("")
                 print('\033[92m'+'[+] '+vendors[vendor_name]+'\033[0m')
+                print("")
+                print('\033[92m'+'Vendor found!'+'\033[0m')
                 return
             else:
                 print('\033[91m'+'[-] '+vendors[vendor_name]+'\033[0m')
     print('')
-    print('\033[91m'+'No results!'+'\033[0m')
+    print('\033[91m'+'Vendor not found!'+'\033[0m')
 
 def print_banner():
     print("")
