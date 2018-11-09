@@ -1,4 +1,4 @@
-# What-Vendor-Mac-Address
+# Vendor-Mac-Address
 Get the manufacturer by mac address, focused on mobile phones.
 
 ## Usage
